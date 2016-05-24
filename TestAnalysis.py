@@ -12,8 +12,8 @@ class TestAnalysis( AnalysisBase ):
       super(TestAnalysis,self).Initialize()
       print "INFO: initializing", self.name, ":", self.description
 
-   def Execute( self ):
-      pass
+   def Execute( self, event_raw ):
+      print event_raw.ljet_pt[0] / 1000.
 
    def Finalize( self ):
       print "INFO: Finalized", self.name

@@ -18,5 +18,5 @@ class AnalysisBase(object):
    def Finalize( self ):
       pass
 
-   def Execute( self ):
-      pass
+   def Execute( self, event_raw ):
+      print "WARNING: you should override the Execute function!"
