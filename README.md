@@ -3,6 +3,8 @@ Analysis program based on root_numpy and python/cython
 
 * INSTALLATION
 virtualenv env_root_python
+source env_root_python/bin/activate
+
 pip install numpy
 pip install root_numpy
 git clone https://github.com/rdisipio/baobab.git
