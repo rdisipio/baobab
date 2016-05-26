@@ -82,15 +82,15 @@ INFO: Running Baobab
       root_tree_parton.Add( fname )
       root_tree_particle.Add( fname )
 
-  np_tree_reco = tree2array( root_tree_reco ).view(numpy.recarray)
+  np_tree_reco = tree2array( root_tree_reco )#.view(numpy.recarray)
   nentries_reco = len( np_tree_reco )
   print "INFO: entries found:", nentries_reco
 
   np_tree_parton   = None
   np_tree_particle = None
   if doTruth:
-     np_tree_parton   = tree2array( root_tree_parton ).view(numpy.recarray)
-     np_tree_particle = tree2array( root_tree_particle ).view(numpy.recarray)
+     np_tree_parton   = tree2array( root_tree_parton )#.view(numpy.recarray)
+     np_tree_particle = tree2array( root_tree_particle )#.view(numpy.recarray)
 
   # Open output file
   ofile = TFile.Open( args.output_filename, "RECREATE" )
@@ -101,17 +101,17 @@ INFO: Running Baobab
   print "INFO: Looping over", nentries_reco, "events"
 
   for ientry in range( nentries_reco ):
-    event_raw = np_tree_reco[ientry]
+    event_raw = np_tree_reco[ientry] #.view(numpy.recarray)
 
-    eventNumber = np_tree_reco.eventNumber[ientry]
-    runNumber   = np_tree_reco.runNumber[ientry]
+    eventNumber = np_tree_reco['eventNumber'][0]
+    runNumber   = np_tree_reco['runNumber'][0]
 
     # printout minimal stat - I'm alive
     if ( nentries_reco < 10 ) or ( (ientry+1) % int(float(nentries_reco)/10.)  == 0 ):
       perc = 100. * ientry / float(nentries_reco)
       print "INFO: Event %-9i (en = %-10i rn = %-10i )       (%3.0f %%)" % ( ientry, eventNumber, runNumber, perc )
 
-#    analysis_handle.Execute( event_raw )     
+    analysis_handle.Execute( event_raw )     
 
   # Finalize
   analysis_handle.Finalize()

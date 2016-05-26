@@ -11,7 +11,8 @@ class TestAnalysis( AnalysisBase ):
       print "INFO: initializing", self.name, ":", self.description
 
    def Execute( self, event_raw ):
-      print event_raw.ljet_pt[0] / 1000.
+      print event_raw['eventNumber']
+#      print event.ljet_pt[0] / 1000.
 
    def Finalize( self ):
       print "INFO: Finalized", self.name
