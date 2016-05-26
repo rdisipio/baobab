@@ -4,7 +4,7 @@ import os, sys
 
 class AnalysisBase(object):
 
-   def __init__( self, name="Base analysis", description="Baseline analysis", runArgs=None, opts=None):
+   def __init__( self, name="Base analysis", description="Baseline analysis" ):
       self.name        = name
       self.description = description
 
@@ -27,3 +27,9 @@ class AnalysisBase(object):
       print "WARNING: you should override the Execute function!"
   
    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   def GetName( self ):
+     return self.name
+
+   def GetDescription( self ):
+     return self.description

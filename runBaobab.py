@@ -46,9 +46,10 @@ INFO: Running Baobab
   except:
     print "ERROR: unable to load analysis", args.analysis
     exit(1)
-  print "INFO: loaded analysis", args.analysis
   analysis_handle = analysis_plugin.AnalysisFactory()
   analysis_handle.Initialize()
+  print "INFO: loaded analysis:", analysis_handle.name
+  print "INFO:", analysis_handle.description
 
   treename = "nominal"
   syst = args.systematic

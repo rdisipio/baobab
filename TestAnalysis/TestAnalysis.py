@@ -3,8 +3,8 @@
 from baobab import *
 
 class TestAnalysis( AnalysisBase ):
-   def __init__( self, name="Test analysis", description="A test analysis", runArgs=None, opts=None ):
-      super( TestAnalysis, self).__init__( runArgs, opts )
+   def __init__( self, name="Test analysis", description="A test analysis" ):
+      super( TestAnalysis, self).__init__( name, description )
 
    def Initialize( self ):
       super(TestAnalysis,self).Initialize()
@@ -18,5 +18,5 @@ class TestAnalysis( AnalysisBase ):
       print "INFO: Finalized", self.name
 
 
-def AnalysisFactory( runArgs=None, opts=None ):
-   return TestAnalysis( runArgs, opts )
+def AnalysisFactory():
+   return TestAnalysis()
