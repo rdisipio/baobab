@@ -28,6 +28,6 @@ class AnalysisBase(object):
   
    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   def BookHistograms( self, file ):
+   def BookHistograms( self ):
      pass
  

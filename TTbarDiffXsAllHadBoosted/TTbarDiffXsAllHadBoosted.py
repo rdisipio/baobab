@@ -2,6 +2,8 @@
 
 from baobab import *
 
+import FinalStateObjectsSelector
+
 class TTbarDiffXsAllHadBoosted( AnalysisBase ):
    def __init__( self, name="TTbarDiffXsAllHadBoosted analysis", description="All-hadronic boosted ttbar cross-section sqrt(s) = 13 TeV" ):
       super( TTbarDiffXsAllHadBoosted, self ).__init__( name, description )
@@ -19,22 +21,22 @@ class TTbarDiffXsAllHadBoosted( AnalysisBase ):
    ######################################################
 
 
-   def BookHistograms( self, rootfile ):
-     rootfile.cd()
-
+   def BookHistograms( self ):
      HistogramManager.Book( self.__basedir + "histograms.xml" )
+
 
    ######################################################
  
    def Execute( self, event_raw ):
       w = 1.
 
+      event = FinalStateObjectsSelector.MakeEvent( event_raw )
+
 
    ######################################################
 
 
    def Finalize( self ):
-     HistogramManager.Save()
      print "INFO: Finalized", self.name
 
 

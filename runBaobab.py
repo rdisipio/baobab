@@ -94,8 +94,8 @@ INFO: Running Baobab
      np_tree_particle = tree2array( root_tree_particle )#.view(numpy.recarray)
 
   # Open output file
-  ofile = TFile.Open( args.output_filename, "RECREATE" )
-  histograms = analysis_handle.BookHistograms( ofile )
+  HistogramManager.CreateOutputFile( args.output_filename )
+  histograms = analysis_handle.BookHistograms()
 
   # Main event loop
   if args.nevents > 0:
@@ -119,7 +119,7 @@ INFO: Running Baobab
   # Finalize
   analysis_handle.Finalize()
 
-  ofile.Close()
+  HistogramManager.Save()
 
   print "INFO: Finished. Created file", args.output_filename
 
