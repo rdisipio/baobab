@@ -28,8 +28,6 @@ class AnalysisBase(object):
   
    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   def GetName( self ):
-     return self.name
-
-   def GetDescription( self ):
-     return self.description
+   def BookHistograms( self, file ):
+     pass
+ 

@@ -95,6 +95,7 @@ INFO: Running Baobab
 
   # Open output file
   ofile = TFile.Open( args.output_filename, "RECREATE" )
+  histograms = analysis_handle.BookHistograms( ofile )
 
   # Main event loop
   if args.nevents > 0:
@@ -102,23 +103,22 @@ INFO: Running Baobab
   print "INFO: Looping over", nentries_reco, "events"
 
   for ientry in range( nentries_reco ):
-    event_raw = np_tree_reco[ientry] #.view(numpy.recarray)
+    event_raw = np_tree_reco[ientry]
 
-    eventNumber = np_tree_reco['eventNumber'][0]
-    runNumber   = np_tree_reco['runNumber'][0]
+    eventNumber = event_raw['eventNumber']
+    runNumber   = event_raw['runNumber']
 
-    # printout minimal stat - I'm alive
+    # printout progress %
     if ( nentries_reco < 10 ) or ( (ientry+1) % int(float(nentries_reco)/10.)  == 0 ):
       perc = 100. * ientry / float(nentries_reco)
       print "INFO: Event %-9i (en = %-10i rn = %-10i )       (%3.0f %%)" % ( ientry, eventNumber, runNumber, perc )
+
 
     analysis_handle.Execute( event_raw )     
 
   # Finalize
   analysis_handle.Finalize()
 
-  ofile.cd()
-  ofile.Write()
   ofile.Close()
 
   print "INFO: Finished. Created file", args.output_filename

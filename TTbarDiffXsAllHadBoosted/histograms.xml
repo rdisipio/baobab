@@ -1,0 +1,4 @@
+<histograms>
+  <TH1 name="h1" title="Title1" nbins="10" xmin="-0.5" xmax="9.5" /> 
+  <TH1 name="h2" title="Title2" xedges="0,1,2,3,4,5" />
+</histograms>
