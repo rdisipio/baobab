@@ -100,7 +100,7 @@ INFO: Running Baobab
      np_tree_particle = tree2array( root_tree_particle )#.view(numpy.recarray)
 
   # Open output file
-  HistogramManager.CreateOutputFile( args.output_filename )
+  hm.CreateOutputFile( args.output_filename )
   histograms = analysis_handle.BookHistograms()
 
   # Main event loop
@@ -125,7 +125,7 @@ INFO: Running Baobab
   # Finalize
   analysis_handle.Finalize()
 
-  HistogramManager.Save()
+  hm.Save()
 
   print "INFO: Finished. Created file", args.output_filename
 

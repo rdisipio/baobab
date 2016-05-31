@@ -76,7 +76,6 @@ def Book( xmlfilename ):
         if histograms.has_key(hpath):
           print "WARNING: histogram with path", hpath, "was already booked"
 
-        print hpath
         _ofile.cd()
         currentDir = CreatePath( hpath )
 
@@ -95,7 +94,29 @@ def Book( xmlfilename ):
 
 
 def Save():
+  for hpath, h in histograms.iteritems():
+     print "INFO:", hpath, " entries =", h.GetEntries()
+#     h.Write()
+
+  _ofile.cd()
   _ofile.Write()
 #  _ofile.cd()
 #  for hname, h in histograms.iteritems(): h.Write()
   _ofile.Close()
+
+#########################################
+
+def cd( path ):
+  _ofile.cd()
+  _ofile.cd( path )
+
+def Get( hname ):
+   return ROOT.gDirectory.Get( hname )
+
+def Fill1D( hpath, y, w=1. ):
+   h = histograms[hpath]
+   h.Fill( y, w )
+
+def Fill2D( hpath, x, y, w=1. ):
+   h = histograms[hpath]
+   h.Fill( x, y, w )

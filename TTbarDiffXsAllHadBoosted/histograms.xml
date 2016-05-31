@@ -32,7 +32,7 @@
      <TH1 name="bjets_j1_pt"  title="Leading b-Jets p_{T} [GeV]"                xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
      <TH1 name="bjets_j2_pt"  title="2nd leading b-Jets p_{T} [GeV]"            xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
 
-     <TH1 name="ljets_n"         title="Large-R jets multiplicity"              nbins="5" xmin="-0.5" xmax="5.5" />
+     <TH1 name="ljets_n"         title="Large-R jets multiplicity"              nbins="5" xmin="-0.5" xmax="4.5" />
      <TH1 name="ljets_pt"        title="Large-R jets p_{T} [GeV]"               xedges="450, 550, 650, 750, 1200" />
      <TH1 name="ljets_eta"       title="Large-R jets #eta"	              nbins="10" xmin="0." xmax="2." />
      <TH1 name="ljets_j1_pt"     title="Leading large-R jet p_{T} [GeV]"        xedges="450, 550, 650, 750, 1200" />
@@ -42,7 +42,7 @@
      <TH1 name="ljets_j2_pt"     title="2nd leading large-R jet p_{T} [GeV]"    xedges="450, 550, 650, 750, 1200" />
      <TH1 name="ljets_j2_m"      title="2nd leading large-R jet mass [GeV]"     nbins="12" xmin="120." xmax="240." />
      <TH1 name="ljets_j2_sd12"   title="2nd leading large-R jet #sqrt{d_{12}}"  nbins="15" xmin="0."   xmax="300." />
-     <TH1 name="ljets_j22_tau32" title="2nd leading large-R jet #tau_{32}"      nbins="12" xmin="0."   xmax="1.2" />
+     <TH1 name="ljets_j2_tau32" title="2nd leading large-R jet #tau_{32}"      nbins="12" xmin="0."   xmax="1.2" />
 
      <TH1 name="dR_bb"          title="#Delta R(b_{1}, b_{2})"	            nbins="5"  xmin="0." xmax="5." />
      <TH1 name="min_dR_t1_b"    title="min #Delta R(t_{1},b)"	            nbins="10" xmin="0." xmax="1." />

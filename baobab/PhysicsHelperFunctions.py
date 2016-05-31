@@ -59,27 +59,27 @@ def BMatching( event ):
 ################################
 
 
-def EventVariables( t1, t2, tt ):
+def FinalObservables( t1, t2, tt ):
       y1 = t1.Rapidity()
       y2 = t2.Rapidity()
       pT1 = t1.Pt()
       pT2 = t2.Pt()
 
-      event_variables = {}
+      observables = {}
 
       # baseline observables
-      event_variables['mtt']  = tt.M()
-      event_variables['pTtt'] = tt.Pt()
-      event_variables['ytt']  = tt.Rapidity()
+      observables['mtt']  = tt.M()
+      observables['pTtt'] = tt.Pt()
+      observables['ytt']  = tt.Rapidity()
 
-      event_variables['t1_pt'] = t1.Pt()
-      event_variables['t1_y']  = t1.Rapidity()
-      event_variables['t2_pt'] = t2.Pt()
-      event_variables['t2_y']  = t2.Rapidity()
+      observables['t1_pt'] = t1.Pt()
+      observables['t1_y']  = t1.Rapidity()
+      observables['t2_pt'] = t2.Pt()
+      observables['t2_y']  = t2.Rapidity()
 
       # HT = pT1 + pT2
       HTtt = t1.Pt() + t2.Pt()
-      event_variables['HTtt'] = HTtt
+      observables['HTtt'] = HTtt
 
       # cosThetaStar
 #      v_tt = tt.Vect()
@@ -89,26 +89,26 @@ def EventVariables( t1, t2, tt ):
 #      t2_star = TLorentzVector( t2 )
 #      t2_star.Boost( 0., 0., v_boost.Z() )
       cosThetaStar = t1_star.CosTheta()
-      event_variables['cosThetaStar'] = cosThetaStar
+      observables['cosThetaStar'] = cosThetaStar
 
       # y_boost
-      event_variables['yboost'] = 0.5 * abs( y1 + y2 )
+      observables['yboost'] = 0.5 * abs( y1 + y2 )
 
       # chi
       ystar = 0.5*(y1-y2) if ( pT1 > pT2 ) else 0.5*(y2-y1)
-      event_variables['chi'] = exp( 2. * abs( ystar ) )
+      observables['chi'] = exp( 2. * abs( ystar ) )
 
       # p_out
       v1 = t1.Vect()
       v2 = t2.Vect()
       zUnit = TVector3( 0., 0., 1. )
       vperp = zUnit.Cross( v1 )
-      event_variables['pout'] = v2.Dot( vperp ) / vperp.Mag();
+      observables['pout'] = v2.Dot( vperp ) / vperp.Mag();
 
       # deltaPhi
-      event_variables['dPhi'] = abs( t1.DeltaPhi( t2 ) )
+      observables['dPhi'] = abs( t1.DeltaPhi( t2 ) )
 
-      return event_variables
+      return observables
 
 
 ####################################################

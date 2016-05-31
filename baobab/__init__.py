@@ -5,4 +5,4 @@ from PhysicsHelperFunctions import *
 from AnalysisBase import *
 from FinalStateObjectsSelector import *
 
-import HistogramManager
+import HistogramManager as hm
