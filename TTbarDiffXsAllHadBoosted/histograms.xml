@@ -1,47 +1,71 @@
+<document>
+<folders>
+  <folder name="r_0t0b">reco/passed_0t0b</folder>
+  <folder name="r_0t1b">reco/passed_0t1b</folder>
+  <folder name="r_0t2b">reco/passed_0t2b</folder>
+  <folder name="r_1t0b">reco/passed_1t0b</folder>
+  <folder name="r_1t1b">reco/passed_1t1b</folder>
+  <folder name="r_1t2b">reco/passed_1t2b</folder>
+  <folder name="r_2t0b">reco/passed_2t0b</folder>
+  <folder name="r_2t1b">reco/passed_2t1b</folder>
+  <folder name="r_2t2b">reco/passed_2t2b</folder>
+  <folder name="p_0t0b">particle/passed_0t0b</folder>
+  <folder name="p_0t1b">particle/passed_0t1b</folder>
+  <folder name="p_0t2b">particle/passed_0t2b</folder>
+  <folder name="p_1t0b">particle/passed_1t0b</folder>
+  <folder name="p_1t1b">particle/passed_1t1b</folder>
+  <folder name="p_1t2b">particle/passed_1t2b</folder>
+  <folder name="p_2t0b">particle/passed_2t0b</folder>
+  <folder name="p_2t1b">particle/passed_2t1b</folder>
+  <folder name="p_2t2b">particle/passed_2t2b</folder>
+</folders>
 <histograms>
-  <TH1 path="reco/passed_2t2b/jets_n"       title="Narrow jets multiplicity"                  nbins="12" xmin="-0.5" xmax="11.5" />
-  <TH1 path="reco/passed_2t2b/jets_pt"      title="Narrow jets p_{T} [GeV]"	             xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
-  <TH1 path="reco/passed_2t2b/jets_eta"     title="Narrow jets #eta"	                     nbins="15" xmin="0." xmax="3." />
-  <TH1 path="reco/passed_2t2b/jets_j1_pt"   title="Leading narrow jet p_{T} [GeV]"            xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
+  <set name="control" folders="r_0t0b,r_0t1b,r_0t2b,r_1t0b,r_1t1b,r_1t2b,r_2t0b,r_2t1b,r_2t2b,p_2t2b" >
+     <TH1 name="jets_n"       title="Narrow jets multiplicity"                  nbins="12" xmin="-0.5" xmax="11.5" />
+     <TH1 name="jets_pt"      title="Narrow jets p_{T} [GeV]"	              xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
+     <TH1 name="jets_eta"     title="Narrow jets #eta"	                      nbins="15" xmin="0." xmax="3." />
+     <TH1 name="jets_j1_pt"   title="Leading narrow jet p_{T} [GeV]"            xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
 
-  <TH1 path="reco/passed_2t2b/bjets_n"      title="b-Jets multiplicity"	                     nbins="5" xmin="-0.5" xmax="4.5" />
-  <TH1 path="reco/passed_2t2b/bjets_pt"     title="b-Jets p_{T} [GeV]"	                     xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
-  <TH1 path="reco/passed_2t2b/bjets_eta"    title="b-Jets #eta"	                             nbins="15" xmin="0." xmax="3." />
-  <TH1 path="reco/passed_2t2b/bjets_j1_pt"  title="Leading b-Jets p_{T} [GeV]"                xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
-  <TH1 path="reco/passed_2t2b/bjets_j2_pt"  title="2nd leading b-Jets p_{T} [GeV]"            xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
+     <TH1 name="bjets_n"      title="b-Jets multiplicity"	                      nbins="5" xmin="-0.5" xmax="4.5" />
+     <TH1 name="bjets_pt"     title="b-Jets p_{T} [GeV]"	                      xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
+     <TH1 name="bjets_eta"    title="b-Jets #eta"	                              nbins="15" xmin="0." xmax="3." />
+     <TH1 name="bjets_j1_pt"  title="Leading b-Jets p_{T} [GeV]"                xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
+     <TH1 name="bjets_j2_pt"  title="2nd leading b-Jets p_{T} [GeV]"            xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
 
-  <TH1 path="reco/passed_2t2b/ljets_n"         title="Large-R jets multiplicity"              nbins="5" xmin="-0.5" xmax="5.5" />
-  <TH1 path="reco/passed_2t2b/ljets_pt"        title="Large-R jets p_{T} [GeV]"               xedges="450, 550, 650, 750, 1200" />
-  <TH1 path="reco/passed_2t2b/ljets_eta"       title="Large-R jets #eta"	                     nbins="10" xmin="0." xmax="2." />
-  <TH1 path="reco/passed_2t2b/ljets_j1_pt"     title="Leading large-R jet p_{T} [GeV]"        xedges="450, 550, 650, 750, 1200" />
-  <TH1 path="reco/passed_2t2b/ljets_j1_m"      title="Leading large-R jet mass [GeV]"         nbins="12" xmin="120." xmax="240." />
-  <TH1 path="reco/passed_2t2b/ljets_j1_sd12"   title="Leading large-R jet #sqrt{d_{12}}"      nbins="15" xmin="0."   xmax="300." />
-  <TH1 path="reco/passed_2t2b/ljets_j1_tau32"  title="Leading large-R jet #tau_{32}"          nbins="12" xmin="0."   xmax="1.2" />
-  <TH1 path="reco/passed_2t2b/ljets_j2_pt"     title="2nd leading large-R jet p_{T} [GeV]"    xedges="450, 550, 650, 750, 1200" />
-  <TH1 path="reco/passed_2t2b/ljets_j2_m"      title="2nd leading large-R jet mass [GeV]"     nbins="12" xmin="120." xmax="240." />
-  <TH1 path="reco/passed_2t2b/ljets_j2_sd12"   title="2nd leading large-R jet #sqrt{d_{12}}"  nbins="15" xmin="0."   xmax="300." />
-  <TH1 path="reco/passed_2t2b/ljets_j22_tau32" title="2nd leading large-R jet #tau_{32}"      nbins="12" xmin="0."   xmax="1.2" />
+     <TH1 name="ljets_n"         title="Large-R jets multiplicity"              nbins="5" xmin="-0.5" xmax="5.5" />
+     <TH1 name="ljets_pt"        title="Large-R jets p_{T} [GeV]"               xedges="450, 550, 650, 750, 1200" />
+     <TH1 name="ljets_eta"       title="Large-R jets #eta"	              nbins="10" xmin="0." xmax="2." />
+     <TH1 name="ljets_j1_pt"     title="Leading large-R jet p_{T} [GeV]"        xedges="450, 550, 650, 750, 1200" />
+     <TH1 name="ljets_j1_m"      title="Leading large-R jet mass [GeV]"         nbins="12" xmin="120." xmax="240." />
+     <TH1 name="ljets_j1_sd12"   title="Leading large-R jet #sqrt{d_{12}}"      nbins="15" xmin="0."   xmax="300." />
+     <TH1 name="ljets_j1_tau32"  title="Leading large-R jet #tau_{32}"          nbins="12" xmin="0."   xmax="1.2" />
+     <TH1 name="ljets_j2_pt"     title="2nd leading large-R jet p_{T} [GeV]"    xedges="450, 550, 650, 750, 1200" />
+     <TH1 name="ljets_j2_m"      title="2nd leading large-R jet mass [GeV]"     nbins="12" xmin="120." xmax="240." />
+     <TH1 name="ljets_j2_sd12"   title="2nd leading large-R jet #sqrt{d_{12}}"  nbins="15" xmin="0."   xmax="300." />
+     <TH1 name="ljets_j22_tau32" title="2nd leading large-R jet #tau_{32}"      nbins="12" xmin="0."   xmax="1.2" />
 
-  <TH1 path="reco/passed_2t2b/dR_bb"          title="#Delta R(b_{1}, b_{2})"	           nbins="5"  xmin="0." xmax="5." />
-  <TH1 path="reco/passed_2t2b/min_dR_t1_b"    title="min #Delta R(t_{1},b)"	           nbins="10" xmin="0." xmax="1." />
-  <TH1 path="reco/passed_2t2b/min_dR_t2_b"    title="min #Delta R(t_{2},b)"	           nbins="10" xmin="0." xmax="1." />
-  <TH1 path="reco/passed_2t2b/min_dPhi_met_t" title="#Delta #phi( E_{T}^{miss}, t#bar{t} )" nbins="8"  xmin="0." xmax="6.28" />
-  <TH1 path="reco/passed_2t2b/met_pt"         title="E_{T}^{miss} [GeV]"	                   nbins="10" xmin="0." xmax="150." />
-  <TH1 path="reco/passed_2t2b/met_sig"        title="E_{T}^{miss} / #sqrt{H_{T}}"	   nbins="10" xmin="0." xmax="100." />
-  <TH1 path="reco/passed_2t2b/mu"             title="Avg n. of int per bx"	           nbins="20" xmin="0"  xmax="40" />
-
-  <TH1 path="reco/passed_2t2b/t1_pt"      title="p_{T}^{t,1} [GeV]"       xedges="450, 550, 650, 750, 1200" />
-  <TH1 path="reco/passed_2t2b/t1_absy"    title="|y^{t,1}|"               xedges="0.0, 0.5, 1.0, 1.5, 2.5" />
-  <TH1 path="reco/passed_2t2b/t2_pt"      title="p_{T}^{t,2} [GeV]"       xedges="450, 550, 650, 750, 1200" />
-  <TH1 path="reco/passed_2t2b/t2_absy"    title="|y^{t,2}|"               xedges="0.0, 0.5, 1.0, 1.5, 2.5" />
-  <TH1 path="reco/passed_2t2b/tt_m"       title="m^{t#bar{t}} [TeV]"      xedges="1.0, 1.1, 1.3, 1.5, 1.7, 2.5" />
-  <TH1 path="reco/passed_2t2b/tt_pt"      title="p_{T}^{t#bar{t}} [GeV]"  xedges="0, 35, 75, 125, 170, 225, 800" />
-  <TH1 path="reco/passed_2t2b/tt_absy"    title="|y^{t#bar{t}|"           xedges="0.0, 0.5, 1.0, 1.5, 2.5" />
-  <TH1 path="reco/passed_2t2b/tt_yboost"  title="y_{B}^{t#bar{t}"         xedges="0., 0.4, 0.8, 1.2, 1.6, 2.0" />
-  <TH1 path="reco/passed_2t2b/tt_chi"     title="#chi^{t#bar{t}"          xedges="1.0, 1.5, 2.5, 5.0, 10." />
-  <TH1 path="reco/passed_2t2b/tt_pout"    title="|p_{out}^{t#bar{t}|"     xedges="0., 50., 100., 200., 500." />
-  <TH1 path="reco/passed_2t2b/tt_dPhi"    title="#Delta #phi^{t#bar{t}|"  xedges="0.0, 2.50, 2.75, 3.00, 3.14" />
-  <TH1 path="reco/passed_2t2b/tt_HT"      title="H_{T} [GeV]"             xedges="1000., 1100., 1200., 1300., 1500." />
-  <TH1 path="reco/passed_2t2b/tt_cTs"     title="|cos#theta^{*}|"         xedges="0., 0.2, 0.4, 0.6, 0.8, 1.0" />
-
+     <TH1 name="dR_bb"          title="#Delta R(b_{1}, b_{2})"	            nbins="5"  xmin="0." xmax="5." />
+     <TH1 name="min_dR_t1_b"    title="min #Delta R(t_{1},b)"	            nbins="10" xmin="0." xmax="1." />
+     <TH1 name="min_dR_t2_b"    title="min #Delta R(t_{2},b)"	            nbins="10" xmin="0." xmax="1." />
+     <TH1 name="min_dPhi_met_t" title="#Delta #phi( E_{T}^{miss}, t#bar{t} )" nbins="8"  xmin="0." xmax="6.28" />
+     <TH1 name="met_pt"         title="E_{T}^{miss} [GeV]"	            nbins="10" xmin="0." xmax="150." />
+     <TH1 name="met_sig"        title="E_{T}^{miss} / #sqrt{H_{T}}"	    nbins="10" xmin="0." xmax="100." />
+     <TH1 name="mu"             title="Avg n. of int per bx"	            nbins="20" xmin="0"  xmax="40" />
+   </set>
+   <set name="observables" folders="r_0t0b,r_0t1b,r_0t2b,r_1t0b,r_1t1b,r_1t2b,r_2t0b,r_2t1b,r_2t2b,p_2t2b" >
+     <TH1 name="t1_pt"      title="p_{T}^{t,1} [GeV]"       xedges="450, 550, 650, 750, 1200" />
+     <TH1 name="t1_absy"    title="|y^{t,1}|"               xedges="0.0, 0.5, 1.0, 1.5, 2.5" />
+     <TH1 name="t2_pt"      title="p_{T}^{t,2} [GeV]"       xedges="450, 550, 650, 750, 1200" />
+     <TH1 name="t2_absy"    title="|y^{t,2}|"               xedges="0.0, 0.5, 1.0, 1.5, 2.5" />
+     <TH1 name="tt_m"       title="m^{t#bar{t}} [TeV]"      xedges="1.0, 1.1, 1.3, 1.5, 1.7, 2.5" />
+     <TH1 name="tt_pt"      title="p_{T}^{t#bar{t}} [GeV]"  xedges="0, 35, 75, 125, 170, 225, 800" />
+     <TH1 name="tt_absy"    title="|y^{t#bar{t}|"           xedges="0.0, 0.5, 1.0, 1.5, 2.5" />
+     <TH1 name="tt_yboost"  title="y_{B}^{t#bar{t}"         xedges="0., 0.4, 0.8, 1.2, 1.6, 2.0" />
+     <TH1 name="tt_chi"     title="#chi^{t#bar{t}"          xedges="1.0, 1.5, 2.5, 5.0, 10." />
+     <TH1 name="tt_pout"    title="|p_{out}^{t#bar{t}|"     xedges="0., 50., 100., 200., 500." />
+     <TH1 name="tt_dPhi"    title="#Delta #phi^{t#bar{t}|"  xedges="0.0, 2.50, 2.75, 3.00, 3.14" />
+     <TH1 name="tt_HT"      title="H_{T} [GeV]"             xedges="1000., 1100., 1200., 1300., 1500." />
+     <TH1 name="tt_cosThetaStar"    title="|cos#theta^{*}|"         xedges="0., 0.2, 0.4, 0.6, 0.8, 1.0" />
+  </set>
 </histograms>
+</document>

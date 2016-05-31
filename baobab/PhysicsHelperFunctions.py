@@ -4,6 +4,8 @@ from math import sqrt, pow, exp
 import copy
 import array
 
+from ROOT import *
+
 ################################
 
 
@@ -17,7 +19,47 @@ def RemoveNegative( h ):
 ################################
 
 
-def EventVariables( t1, t2, ttbar ):
+def BMatching( event ):
+   bjets = event['bjets']
+   ljets = event['ljets']
+   t1 = ljets[0]
+   t2 = ljets[1]
+
+   tb_match_n  = 0  
+   dR_t1_b     = None
+   dR_t2_b     = None 
+
+   min_dR_1 = 1000.
+   bj_index = -1
+   for bj in bjets:
+      dR = t1.DeltaR( bj )
+      if dR > min_dR_1: continue
+      min_dR_1 = dR
+      bj_index = bj.index
+   if min_dR_1 < 1.0:
+      t1.has_bjet = bj_index
+      tb_match_n += 1
+   dR_t1_b = min_dR_1
+
+   min_dR_2 = 1000.
+   for bj in bjets:
+      if bj.index == t1.has_bjet: continue #already matched
+      dR = t2.DeltaR( bj )
+      if dR > min_dR_2: continue
+      min_dR_2 = dR
+      bj_index = bj.index
+   if min_dR_2 < 1.0:
+      t2.has_bjet = bj_index
+      tb_match_n += 1
+   dR_t2_b = min_dR_2
+
+   return tb_match_n, dR_t1_b, dR_t2_b
+
+
+################################
+
+
+def EventVariables( t1, t2, tt ):
       y1 = t1.Rapidity()
       y2 = t2.Rapidity()
       pT1 = t1.Pt()
@@ -26,9 +68,9 @@ def EventVariables( t1, t2, ttbar ):
       event_variables = {}
 
       # baseline observables
-      event_variables['mtt']  = ttbar.M()
-      event_variables['pTtt'] = ttbar.Pt()
-      event_variables['ytt']  = ttbar.Rapidity()
+      event_variables['mtt']  = tt.M()
+      event_variables['pTtt'] = tt.Pt()
+      event_variables['ytt']  = tt.Rapidity()
 
       event_variables['t1_pt'] = t1.Pt()
       event_variables['t1_y']  = t1.Rapidity()
@@ -40,8 +82,8 @@ def EventVariables( t1, t2, ttbar ):
       event_variables['HTtt'] = HTtt
 
       # cosThetaStar
-#      v_tt = ttbar.Vect()
-      v_boost = -ttbar.BoostVector()
+#      v_tt = tt.Vect()
+      v_boost = -tt.BoostVector()
       t1_star = TLorentzVector( t1 )
       t1_star.Boost( 0., 0., v_boost.Z() )
 #      t2_star = TLorentzVector( t2 )

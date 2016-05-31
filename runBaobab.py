@@ -2,8 +2,10 @@
 
 # author: Riccardo Di Sipio <disipio@cern.ch>
 
-import os, sys, imp
+import os, sys
+import importlib
 import argparse
+import xmltodict
 
 from ROOT import *
 import numpy
@@ -13,11 +15,12 @@ from baobab import *
 
 parser = argparse.ArgumentParser(description='ttbar all-hadronic analyzer')
 parser.add_argument( '-i', '--input_filelist', help="Input file list", default="" )
-parser.add_argument( '-a', '--analysis',       help="Analysis to run", default="TestAnalysis" )
 parser.add_argument( '-n', '--nevents',        help="Maximum number of events", type=int, default=-1 )
 parser.add_argument( '-o', '--output_filename', help="Output file name", default="output.histograms.root" )
-parser.add_argument( '-s', '--systematic', help='systematic uncertainty', default="nominal" )
-parser.add_argument( '-t', '--truth', action="store_true", help='Run in truth mode' )
+parser.add_argument( '-c', '--config',         help="Configuration file" )
+#parser.add_argument( '-s', '--systematic', help='systematic uncertainty', default="nominal" )
+#parser.add_argument( '-a', '--analysis',       help="Analysis to run", default="TestAnalysis" )
+#parser.add_argument( '-t', '--truth', action="store_true", help='Run in truth mode' )
 args = parser.parse_args()
 
 
@@ -38,30 +41,33 @@ if __name__ == "__main__":
 INFO: Running Baobab
 """
 
+  xmlconfig = open( args.config )
+  xmldoc    = xmltodict.parse( xmlconfig.read() )
+  analysis_params = xmldoc['analysis']
+
+  analysis_name = analysis_params['@name']
   analysis_plugin = None
   analysis_handle = None
-  analysis_file   = "%s/%s.py" % ( args.analysis, args.analysis )
-  try:
-    analysis_plugin = imp.load_source( args.analysis, analysis_file )
-  except:
-    print "ERROR: unable to load analysis", args.analysis
-    exit(1)
+  print "INFO: Loading analysis plugin for", analysis_name
+  analysis_file   = "%s/%s.py" % ( analysis_name, analysis_name )
+  analysis_plugin = importlib.import_module( analysis_name )
   analysis_handle = analysis_plugin.AnalysisFactory()
   analysis_handle.Initialize()
   print "INFO: loaded analysis:", analysis_handle.name
   print "INFO:", analysis_handle.description
 
-  treename = "nominal"
-  syst = args.systematic
+  treename = analysis_params['tree']
+  syst     = analysis_params['systematic']
+
   isWeightSystematic = True
   if not syst in weight_systematics:
-    treename   = syst
     isWeightSystematic = False
 
   print "INFO: systematic:", syst
   print "INFO: tree name", treename
 
-  doTruth = args.truth
+  doTruth = False
+  #@TODO: decode from xml file...
   if doTruth:
     print "INFO: Truth analysis requested. Response matrices will be filled." 
 

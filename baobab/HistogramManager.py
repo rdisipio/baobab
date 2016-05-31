@@ -47,33 +47,48 @@ def Book( xmlfilename ):
 
   _ofile.cd()
 
-  f = open( xmlfilename )
-  doc = xmltodict.parse( f.read() )
-  histos = doc['histograms']
-
   print "INFO: HistogramManager: booking histograms defined in file", xmlfilename
 
-  for h1 in histos['TH1']:
-    path  = h1['@path']
-    title = h1['@title'] 
-    if histograms.has_key(path):
-       print "WARNING: histogram with path", path, "was already booked"
+  f = open( xmlfilename )
+  xmldoc = xmltodict.parse( f.read() )
+  doc = xmldoc['document']
 
-    currentDir = CreatePath( path )
+  # interpret folders structure
+  xmlfolders = doc['folders']
+  folders = {}
+  for folder in xmlfolders['folder']:
+    fname = folder['@name']
+    fpath = folder['#text']
+    folders[fname] = fpath
+ 
+  xmlhistos  = doc['histograms']
+  for xmlset in xmlhistos['set']:
+    sname    = xmlset['@name']
+    sfolders = xmlset['@folders'].split(',')
 
-    name = path.split('/')[-1]
+    for h1 in xmlset['TH1']:
+      hname  = h1['@name']
+      htitle = h1['@title']
 
-    if h1.has_key('@xmin'):
-       nbins = int( h1['@nbins'] )
-       xmin = float( h1['@xmin'] )
-       xmax = float( h1['@xmax'] )
-       histograms[path] = ROOT.TH1D( name, title, nbins, xmin, xmax )
-    if h1.has_key( '@xedges' ):
-       xedges = array( 'd', [ float(x) for x in h1['@xedges'].split(",") ] )
-       nbins = len(xedges) - 1
-       histograms[path]	= ROOT.TH1D( name, title, nbins, xedges )
+      for sfolder in sfolders:
+        hpath = folders[sfolder] + "/" + sname + "/" + hname 
 
-    _ofile.cd()
+        if histograms.has_key(hpath):
+          print "WARNING: histogram with path", hpath, "was already booked"
+
+        print hpath
+        _ofile.cd()
+        currentDir = CreatePath( hpath )
+
+        if h1.has_key('@xmin'):
+          nbins = int( h1['@nbins'] )
+          xmin = float( h1['@xmin'] )
+          xmax = float( h1['@xmax'] )
+          histograms[hpath] = ROOT.TH1D( hname, htitle, nbins, xmin, xmax )
+        if h1.has_key( '@xedges' ):
+          xedges = array( 'd', [ float(x) for x in h1['@xedges'].split(",") ] )
+          nbins = len(xedges) - 1
+          histograms[hpath] = ROOT.TH1D( hname, htitle, nbins, xedges )
 
 
 #########################################
