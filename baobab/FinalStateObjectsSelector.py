@@ -25,12 +25,21 @@ class FinalStateObjectsSelectorBase(object):
    ######################################### 
 
 
+   def MakeEventMET( self ): 
+      if self._event_raw == None: return
+
+      self.event['met_met'] = self._event_raw['met_met']
+
+
+   ######################################### 
+
+
    def MakeElectrons( self ):
       if self._event_raw == None: return
 
       self.event['electrons'] = []
-      all_electrons_n = len( self._event_raw['el_pt'] )
-      for i in range( all_electrons_n ):
+      electrons_n = len( self._event_raw['el_pt'] )
+      for i in range( electrons_n ):
          if self._event_raw['el_pt'][i] < self.el_pT_min: continue
          if abs(self._event_raw['el_eta'][i]) > self.el_eta_max: continue
          self.event['electrons'] += [ TLorentzVector() ]
@@ -45,8 +54,8 @@ class FinalStateObjectsSelectorBase(object):
       if self._event_raw == None: return
  
       self.event['muons'] = []
-      all_muons_n = len( self._event_raw['mu_pt'] )
-      for i in range( all_muons_n ):
+      muons_n = len( self._event_raw['mu_pt'] )
+      for i in range( muons_n ):
          if self._event_raw['mu_pt'][i] < self.mu_pT_min: continue
          if abs(self._event_raw['mu_eta'][i]) > self.mu_eta_max: continue
          self.event['muons'] += [ TLorentzVector() ]
@@ -62,10 +71,12 @@ class FinalStateObjectsSelectorBase(object):
  
       self.event['jets'] = []
       self.event['bjets'] = []
-      all_jets_n = len( self._event_raw['jet_pt'] )
-      for i in range( all_jets_n ):
+      jets_n = len( self._event_raw['jet_pt'] )
+      for i in range( jets_n ):
+
          if self._event_raw['jet_pt'][i] < self.jet_pT_min: continue
          if abs(self._event_raw['jet_eta'][i]) > self.jet_eta_max: continue
+
          self.event['jets'] += [ TLorentzVector() ]
          jet = self.event['jets'][-1]
          jet.SetPtEtaPhiE( self._event_raw['jet_pt'][i], self._event_raw['jet_eta'][i], self._event_raw['jet_phi'][i], self._event_raw['jet_e'][i] )
@@ -90,17 +101,19 @@ class FinalStateObjectsSelectorBase(object):
       if self._event_raw == None: return
 
       self.event['ljets'] = []
-      all_jets_n = len( self._event_raw['ljet_pt'] )
-      for i in range( all_jets_n ):
+      ljets_n = len( self._event_raw['ljet_pt'] )
+      for i in range( ljets_n ):
+
          if self._event_raw['ljet_pt'][i] < self.ljet_pT_min: continue
          if abs(self._event_raw['ljet_eta'][i]) > self.ljet_eta_max: continue
+
          self.event['ljets'] += [ TLorentzVector() ]
          ljet = self.event['ljets'][-1]
          ljet.SetPtEtaPhiE( self._event_raw['ljet_pt'][i], self._event_raw['ljet_eta'][i], self._event_raw['ljet_phi'][i], self._event_raw['ljet_e'][i] )
          ljet.sd12  = self._event_raw['ljet_sd12'][i]
          ljet.tau21 = self._event_raw['ljet_tau21'][i]
        	 ljet.tau32 = self._event_raw['ljet_tau32'][i]
-         ljet.has_bjet = -1
+         ljet.has_bjet = None
          ljet.index = i
 
          ljet.topTag80 = self._event_raw['ljet_topTag80'][i]
@@ -120,5 +133,6 @@ class FinalStateObjectsSelectorBase(object):
      self.MakeMuons()
      self.MakeJets()
      self.MakeLargeRJets()
+     self.MakeEventMET()
 
      return self.event

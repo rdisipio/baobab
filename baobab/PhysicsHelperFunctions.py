@@ -39,7 +39,7 @@ def BMatching( event ):
    if min_dR_1 < 1.0:
       t1.has_bjet = bj_index
       tb_match_n += 1
-   dR_t1_b = min_dR_1
+      dR_t1_b = min_dR_1
 
    min_dR_2 = 1000.
    for bj in bjets:
@@ -51,7 +51,7 @@ def BMatching( event ):
    if min_dR_2 < 1.0:
       t2.has_bjet = bj_index
       tb_match_n += 1
-   dR_t2_b = min_dR_2
+      dR_t2_b = min_dR_2
 
    return tb_match_n, dR_t1_b, dR_t2_b
 
@@ -68,9 +68,9 @@ def FinalObservables( t1, t2, tt ):
       observables = {}
 
       # baseline observables
-      observables['mtt']  = tt.M()
-      observables['pTtt'] = tt.Pt()
-      observables['ytt']  = tt.Rapidity()
+      observables['tt_m']  = tt.M()
+      observables['tt_pt'] = tt.Pt()
+      observables['tt_y']  = tt.Rapidity()
 
       observables['t1_pt'] = t1.Pt()
       observables['t1_y']  = t1.Rapidity()
@@ -79,7 +79,7 @@ def FinalObservables( t1, t2, tt ):
 
       # HT = pT1 + pT2
       HTtt = t1.Pt() + t2.Pt()
-      observables['HTtt'] = HTtt
+      observables['tt_HT'] = HTtt
 
       # cosThetaStar
 #      v_tt = tt.Vect()
@@ -89,24 +89,24 @@ def FinalObservables( t1, t2, tt ):
 #      t2_star = TLorentzVector( t2 )
 #      t2_star.Boost( 0., 0., v_boost.Z() )
       cosThetaStar = t1_star.CosTheta()
-      observables['cosThetaStar'] = cosThetaStar
+      observables['tt_cosThetaStar'] = cosThetaStar
 
       # y_boost
-      observables['yboost'] = 0.5 * abs( y1 + y2 )
+      observables['tt_yboost'] = 0.5 * abs( y1 + y2 )
 
       # chi
       ystar = 0.5*(y1-y2) if ( pT1 > pT2 ) else 0.5*(y2-y1)
-      observables['chi'] = exp( 2. * abs( ystar ) )
+      observables['tt_chi'] = exp( 2. * abs( ystar ) )
 
       # p_out
       v1 = t1.Vect()
       v2 = t2.Vect()
       zUnit = TVector3( 0., 0., 1. )
       vperp = zUnit.Cross( v1 )
-      observables['pout'] = v2.Dot( vperp ) / vperp.Mag();
+      observables['tt_pout'] = v2.Dot( vperp ) / vperp.Mag();
 
       # deltaPhi
-      observables['dPhi'] = abs( t1.DeltaPhi( t2 ) )
+      observables['tt_dPhi'] = abs( t1.DeltaPhi( t2 ) )
 
       return observables
 
