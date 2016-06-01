@@ -38,9 +38,9 @@ dryrun=0
 
 jobname=Job_${SUBMISSION_TIMESTAMP}
 filelist=UNSET
-outfilename=output.histograms.root
+outfilename=output/test/histograms.root
 nevents=-1
-xmlconfig=nominal.xml
+xmlconfig=config/analysis_params/nominal.xml
 
 while [ $# -gt 0 ] ; do
 case $1 in

@@ -132,7 +132,7 @@ class TTbarDiffXsAllHadBoosted( AnalysisBase ):
 
       met_met = event['met_met']
       met_sig = met_met / jets_HT
-      hm.Fill1D( path + "met_met", met_met,  w )
+      hm.Fill1D( path + "met_met", met_met/GeV,  w )
       hm.Fill1D( path + "met_sig", met_sig, w )
 
 
