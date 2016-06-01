@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import glob
 from distutils.core import setup
 
 setup(name='Baobab',
@@ -10,6 +11,6 @@ setup(name='Baobab',
       author_email='disipio@cern.ch',
       url='',
       packages=['baobab', 'TTbarDiffXsAllHadBoosted' ],
-      scripts=['scripts/runBaobab.py', 'scripts/baobab-prepare_env.sh', 'scripts/baobab-submit.sh' ],
+      scripts=['scripts/runBaobab.py'] + glob.glob( "scripts/baobab-*.sh" ), 
       package_data={ 'baobab' : [ "share/*" ], 'TTbarDiffXsAllHadBoosted' : [ "config/*.xml", "config/*.dat", "config/analysis_params/*.xml",  "config/filelist/*.dat" ] },
      )

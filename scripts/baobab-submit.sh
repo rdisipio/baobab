@@ -21,7 +21,7 @@ then
   exit
 fi
 
-WORKDIR=${ROOTCOREBIN}/../run
+WORKDIR=${PWD}
 jobdir=${WORKDIR}/jobs
 logdir=${WORKDIR}/logs
 
@@ -110,8 +110,6 @@ source $ATLAS_LOCAL_RCSETUP_PATH/rcSetup.sh
 source setenv.sh
 
 cd ${WORKDIR}
-
-export SELECTION=${SELECTION}
 
 source /afs/cern.ch/project/eos/installation/atlas/etc/setup.sh 
 [ ! -d eos ] && mkdir -p eos
