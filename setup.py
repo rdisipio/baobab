@@ -10,5 +10,6 @@ setup(name='Baobab',
       author_email='disipio@cern.ch',
       url='',
       packages=['baobab', 'TTbarDiffXsAllHadBoosted' ],
-      scripts=['scripts/runBaobab.py'],
+      scripts=['scripts/runBaobab.py', 'scripts/baobab-prepare_env.sh', 'scripts/baobab-submit.sh' ],
+      package_data={ 'baobab' : [ "share/*" ], 'TTbarDiffXsAllHadBoosted' : [ "config/*.xml", "config/*.dat", "config/analysis_params/*.xml",  "config/filelist/*.dat" ] },
      )

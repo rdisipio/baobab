@@ -94,14 +94,12 @@ def Book( xmlfilename ):
 
 
 def Save():
-  for hpath, h in histograms.iteritems():
-     print "INFO:", hpath, " entries =", h.GetEntries()
+#  for hpath, h in histograms.iteritems():
+#     print "INFO:", hpath, " entries =", h.GetEntries()
 #     h.Write()
 
   _ofile.cd()
   _ofile.Write()
-#  _ofile.cd()
-#  for hname, h in histograms.iteritems(): h.Write()
   _ofile.Close()
 
 #########################################

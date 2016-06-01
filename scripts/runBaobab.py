@@ -16,8 +16,8 @@ from baobab import *
 parser = argparse.ArgumentParser(description='ttbar all-hadronic analyzer')
 parser.add_argument( '-i', '--input_filelist', help="Input file list", default="" )
 parser.add_argument( '-n', '--nevents',        help="Maximum number of events", type=int, default=-1 )
-parser.add_argument( '-o', '--output_filename', help="Output file name", default="output.histograms.root" )
-parser.add_argument( '-c', '--config',         help="Configuration file" )
+parser.add_argument( '-o', '--output_filename', help="Output file name", default="output/test/histograms.root" )
+parser.add_argument( '-c', '--config',         help="Configuration file", default="config/analysis_params/nominal.xml" )
 #parser.add_argument( '-s', '--systematic', help='systematic uncertainty', default="nominal" )
 #parser.add_argument( '-a', '--analysis',       help="Analysis to run", default="TestAnalysis" )
 #parser.add_argument( '-t', '--truth', action="store_true", help='Run in truth mode' )
@@ -25,7 +25,7 @@ args = parser.parse_args()
 
 
 if __name__ == "__main__":
-  print """
+  print """\033[92m \033[1m
               v .   ._, |_  .,
            `-._\/  .  \ /    |/_
                \\  _\, y | \//
@@ -38,7 +38,8 @@ if __name__ == "__main__":
                      |   =|
                      |    |
 --------------------/ ,  . \--------._
-INFO: Running Baobab
+INFO: Running Baobab 
+\033[0m
 """
 
   xmlconfig = open( args.config )
