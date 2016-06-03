@@ -112,12 +112,12 @@ class FinalStateObjectsSelectorBase(object):
          ljet.SetPtEtaPhiE( self._event_raw['ljet_pt'][i], self._event_raw['ljet_eta'][i], self._event_raw['ljet_phi'][i], self._event_raw['ljet_e'][i] )
          ljet.sd12  = self._event_raw['ljet_sd12'][i]
          ljet.tau21 = self._event_raw['ljet_tau21'][i]
-       	 ljet.tau32 = self._event_raw['ljet_tau32'][i]
+         ljet.tau32 = self._event_raw['ljet_tau32'][i]
          ljet.has_bjet = None
          ljet.index = i
 
          ljet.topTag80 = self._event_raw['ljet_topTag80'][i]
-       	 ljet.topTag50 = self._event_raw['ljet_topTag50'][i]
+         ljet.topTag50 = self._event_raw['ljet_topTag50'][i]
 
 #         ljet.topTag80 = HelperFunctions.TopSubstructureTagger( ljet, "80" )
 #         ljet.topTag50 = HelperFunctions.TopSubstructureTagger( ljet, "50" )

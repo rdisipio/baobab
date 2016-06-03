@@ -1,6 +1,8 @@
 # author: Riccardo Di Sipio <disipio@cern.ch>
 
 from baobab import *
+
+import pyximport; pyximport.install()
 import Cutflow
 
 class TTbarDiffXsAllHadBoosted( AnalysisBase ):

@@ -2,6 +2,7 @@
 
 import glob
 from distutils.core import setup
+from Cython.Build import cythonize
 
 setup(name='Baobab',
       version='0.1',
@@ -13,4 +14,5 @@ setup(name='Baobab',
       packages=['baobab', 'TTbarDiffXsAllHadBoosted' ],
       scripts=['scripts/runBaobab.py'] + glob.glob( "scripts/baobab-*.sh" ), 
       package_data={ 'baobab' : [ "share/*" ], 'TTbarDiffXsAllHadBoosted' : [ "config/*.xml", "config/*.dat", "config/analysis_params/*.xml",  "config/filelist/*.dat" ] },
+#      ext_modules = cythonize("baobab/*.pyx"),
      )

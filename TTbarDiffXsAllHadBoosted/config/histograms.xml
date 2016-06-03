@@ -25,7 +25,7 @@
      <TH1 name="jets_pt"      title="Narrow jets p_{T} [GeV]"	              xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
      <TH1 name="jets_eta"     title="Narrow jets #eta"	                      nbins="15" xmin="0." xmax="3." />
      <TH1 name="jets_j1_pt"   title="Leading narrow jet p_{T} [GeV]"            xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
-     <TH1 name="jets_HT"      title="Narrow jets H_{T} [GeV]"                 nbins="20" xmin="0." xmax="2000." />
+     <TH1 name="jets_HT"      title="Narrow jets H_{T} [GeV]"                 nbins="10" xmin="1000." xmax="2000." />
 
      <TH1 name="bjets_n"      title="b-Jets multiplicity"	                      nbins="5" xmin="-0.5" xmax="4.5" />
      <TH1 name="bjets_pt"     title="b-Jets p_{T} [GeV]"	                      xedges="0, 100, 150, 200, 300, 400, 500, 600, 800, 1200" />
