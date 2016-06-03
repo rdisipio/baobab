@@ -1,5 +1,5 @@
 from Defs import *
-from ROOT import *
+from ROOT import TLorentzVector
 
 class FinalStateObjectsSelectorBase(object):
 
@@ -42,7 +42,7 @@ class FinalStateObjectsSelectorBase(object):
       for i in range( electrons_n ):
          if self._event_raw['el_pt'][i] < self.el_pT_min: continue
          if abs(self._event_raw['el_eta'][i]) > self.el_eta_max: continue
-         self.event['electrons'] += [ TLorentzVector() ]
+         self.event['electrons'] += [ fourvector() ]  # [ TLorentzVector() ]
          el = self.event['electrons'][-1]
          el.SetPtEtaPhiE( self._event_raw['el_pt'][i], self._event_raw['el_eta'][i], self._event_raw['el_phi'][i], self._event_raw['el_e'][i] )
          el.index = i

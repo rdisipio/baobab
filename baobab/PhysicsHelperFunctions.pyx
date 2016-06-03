@@ -4,7 +4,8 @@ from math import sqrt, pow, exp
 import copy
 import array
 
-from ROOT import *
+from ROOT import TLorentzVector, TVector3
+from Defs import GeV, TeV
 
 ################################
 
@@ -127,10 +128,9 @@ def InterpolateEfficiency( x, xvalues, yvalues ):
 
 ####################################################
 
-def GetMMEff( t_pt, t_y ):
-  xbins_pt = xedges['t1_pt']
-  xbins_y  = xedges['t1_y' ]
-#   't1_pt' : array( 'd', [ 450, 550, 650, 750, 1200 ] ),
+def GetMMEff( t_pt, t_y, xedges_t1_pt, xedges_t1_y ):
+  xbins_pt = xedges_t1_pt
+  xbins_y  = xedges_t1_y
  
   # fakes come from data outside the top mass window and tau32 cut only.
 
