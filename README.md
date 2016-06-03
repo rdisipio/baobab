@@ -1,7 +1,11 @@
-# baobab
-Analysis program based on root_numpy and python/cython
+.. -*- mode: rst -*-
 
+Baobab: An analysis program based on root_numpy and python/cython
+=================================================================
+
+==============
 * INSTALLATION
+==============
 
 .. code-block:: python
 
@@ -17,7 +21,10 @@ Analysis program based on root_numpy and python/cython
    git clone https://github.com/rdisipio/baobab.git
 
 
+===============
 * MISE EN PLACE
+===============
+
 .. code-block:: python
 
    setupATLAS
@@ -36,7 +43,10 @@ Analysis program based on root_numpy and python/cython
    cd baobab
 
 
+===========
 * EXECUTION
+===========
+
 Create file list, e.g.:
 
 .. code-block:: bash
