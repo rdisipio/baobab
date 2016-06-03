@@ -5,8 +5,12 @@ Analysis program based on root_numpy and python/cython
 virtualenv env_baobab
 source env_baobab/bin/activate
 
+# dependencies
 pip install numpy
 pip install root_numpy
+pip install cython
+pip install xmltodict
+
 git clone https://github.com/rdisipio/baobab.git
 
 
