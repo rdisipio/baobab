@@ -4,7 +4,7 @@ Baobab: An analysis program based on root_numpy and python/cython
 =================================================================
 
 ==============
-* INSTALLATION
+INSTALLATION
 ==============
 
 .. code-block:: python
@@ -22,7 +22,7 @@ Baobab: An analysis program based on root_numpy and python/cython
 
 
 ===============
-* MISE EN PLACE
+MISE EN PLACE
 ===============
 
 .. code-block:: python
@@ -44,7 +44,7 @@ Baobab: An analysis program based on root_numpy and python/cython
 
 
 ===========
-* EXECUTION
+EXECUTION
 ===========
 
 Create file list, e.g.:
