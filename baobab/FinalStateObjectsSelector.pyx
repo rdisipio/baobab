@@ -13,9 +13,11 @@ class FinalStateObjectsSelectorBase(object):
       self.jet_pT_min   = 25.*GeV
       self.jet_eta_max  = 2.5
 
-      self.bjet_weight_min = -0.4434
+      self.bjet_weight_min = 0.8244 # tight
 
-      self.ljet_pT_min = 300.*GeV  
+      self.ljet_m_min   = 50.*GeV
+      self.ljet_pT_min  = 250.*GeV  
+      self.ljet_pT_max  = 1500.*GeV
       self.ljet_eta_max = 2.0
 
       self._event_raw = None
@@ -80,7 +82,7 @@ class FinalStateObjectsSelectorBase(object):
          self.event['jets'] += [ TLorentzVector() ]
          jet = self.event['jets'][-1]
          jet.SetPtEtaPhiE( self._event_raw['jet_pt'][i], self._event_raw['jet_eta'][i], self._event_raw['jet_phi'][i], self._event_raw['jet_e'][i] )
-         jet.bjet_weight = self._event_raw['jet_mv2c20'][i]
+         jet.bjet_weight = self._event_raw['jet_mv2c10'][i]
          jet.index = i
 
          is_btagged = False
@@ -104,7 +106,9 @@ class FinalStateObjectsSelectorBase(object):
       ljets_n = len( self._event_raw['ljet_pt'] )
       for i in range( ljets_n ):
 
+         if self._event_raw['ljet_m'][i]  < self.ljet_m_min:  continue
          if self._event_raw['ljet_pt'][i] < self.ljet_pT_min: continue
+         if self._event_raw['ljet_pt'][i] > self.ljet_pT_max: continue
          if abs(self._event_raw['ljet_eta'][i]) > self.ljet_eta_max: continue
 
          self.event['ljets'] += [ TLorentzVector() ]

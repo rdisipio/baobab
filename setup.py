@@ -31,6 +31,9 @@ extensions = [
   Extension( "baobab.FinalStateObjectsSelector",         ["baobab/FinalStateObjectsSelector.pyx"], extra_compile_args=root_cflags ),
   Extension( "TTbarDiffXsAllHadBoosted.HistogramFiller", ["TTbarDiffXsAllHadBoosted/HistogramFiller.pyx"], extra_compile_args=root_cflags  ),             
   Extension( "TTbarDiffXsAllHadBoosted.Cutflow",         ["TTbarDiffXsAllHadBoosted/Cutflow.pyx"], extra_compile_args=root_cflags  ),
+  Extension( "TTHBoostedAllHadronic.HistogramFiller",    ["TTHBoostedAllHadronic/HistogramFiller.pyx"], extra_compile_args=root_cflags  ),
+  Extension( "TTHBoostedAllHadronic.Cutflow",            ["TTHBoostedAllHadronic/Cutflow.pyx"], extra_compile_args=root_cflags  ),
+
  ]
 
 setup(name='Baobab',
@@ -40,9 +43,13 @@ setup(name='Baobab',
       author='Riccardo Di Sipio',
       author_email='disipio@cern.ch',
       url='',
-      packages=['baobab', 'TTbarDiffXsAllHadBoosted' ],
+      packages=['baobab', 'TTbarDiffXsAllHadBoosted', 'TTHBoostedAllHadronic' ],
       scripts=['scripts/runBaobab.py'] + glob.glob( "scripts/baobab-*.sh" ), 
-      package_data={ 'baobab' : [ "share/*" ], 'TTbarDiffXsAllHadBoosted' : [ "config/*.xml", "config/*.dat", "config/analysis_params/*.xml",  "config/filelist/*.dat" ] },
+      package_data={
+           'baobab'                   : [ "share/*" ], 
+           'TTbarDiffXsAllHadBoosted' : [ "config/*.xml", "config/*.dat", "config/analysis_params/*.xml",  "config/filelist/*.dat" ],
+           'TTHBoostedAllHadronic'    : [ "config/*.xml", "config/*.dat", "config/analysis_params/*.xml",  "config/filelist/*.dat" ], 
+          },
 #      ext_modules = cythonize("baobab/*.pyx", "TTbarDiffXsAllHadBoosted/*.pyx" ),
       ext_modules = cythonize( extensions ),
      )

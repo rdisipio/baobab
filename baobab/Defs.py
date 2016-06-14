@@ -2,8 +2,12 @@
 
 GeV = 1e3
 TeV = 1e6
+mH   = 125.0 * GeV
 mtop = 172.5 * GeV
-iLumi = 3210.
+
+iLumi15 = 3193.68
+iLumi16 = 568.47
+iLumi = iLumi15 + iLumi16
 
 ############################################
 # SYSTEMATICS

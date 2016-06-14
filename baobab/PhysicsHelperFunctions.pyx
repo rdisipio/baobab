@@ -20,9 +20,7 @@ def RemoveNegative( h ):
 ################################
 
 
-def BMatching( event ):
-   bjets = event['bjets']
-   ljets = event['ljets']
+def BMatching( bjets, ljets ):
    t1 = ljets[0]
    t2 = ljets[1]
 
